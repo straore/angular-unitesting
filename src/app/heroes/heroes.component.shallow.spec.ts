@@ -49,8 +49,10 @@ beforeEach(() => {
         expect(fixture.componentInstance.heroes.length).toBe(3);
     });
 
-    
-    it('should render the hero name in an anchor tag',() =>{
-        
+    //this test will check that the template contains 3 elements
+    it('should create one li for each hero',() =>{
+        mockHeroService.getHeroes.and.returnValue(of(HEROES));
+        fixture.detectChanges();
+        expect(fixture.debugElement.queryAll(By.css('li')).length).toBe(3);
     });
 });
